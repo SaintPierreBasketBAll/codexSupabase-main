@@ -43,12 +43,13 @@ if (error) throw error
 ```
 
 ## Developer Workflows
-- **Development**: `pnpm dev` (start dev server)
-- **Build**: `pnpm build` (production build)
-- **Lint & Format**: `pnpm lint` (check), `pnpm format` (auto-fix)
-- **Preview**: `pnpm preview` (preview build)
+- **Development**: `npm run dev` (start dev server)
+- **Build**: `npm run build` (production build)
+- **Lint & Format**: `npm run lint` (check), `npm run format` (auto-fix)
+- **Preview**: `npm run preview` (preview build)
+- **Package Manager**: npm by default; pnpm is acceptable if you choose it, but avoid mixing lockfiles.
 
-Requires `.env.local` with:
+Requires `.env` (see `.env.example`) with:
 ```
 VITE_SUPABASE_URL=your_supabase_project_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -60,5 +61,5 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 - **Imports**: Use `$lib/` alias for `src/lib/`
 - **Error Handling**: Auth functions throw errors; catch and display in components
 - **No Tests**: Add Vitest + @testing-library/svelte if implementing tests
-- **Package Manager**: pnpm (use `pnpm install` for deps)</content>
-<parameter name="filePath">c:\Users\sgspb\Documents\web files spbb\codexSupabase-main\codexSupabase-main\.github\copilot-instructions.md
+- **Supabase Client**: Use `createClient` in `src/lib/supabase.js` and `supabase.auth` in `src/lib/auth.js`
+- **README**: Keep `README.md` aligned with this project's actual setup (not the default Svelte template)
