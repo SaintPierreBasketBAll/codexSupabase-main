@@ -1,32 +1,12 @@
-import { supabase } from './supabase.js'
+import { getSupabaseBrowserClient } from '$lib/supabase.js';
 
-export async function signIn(email, password) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  })
-  if (error) throw error
-  return data
-}
+export async function getUserFromBrowser() {
+	const supabase = getSupabaseBrowserClient();
+	const { data, error } = await supabase.auth.getUser();
 
-export async function signUp(email, password) {
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password
-  })
-  if (error) throw error
-  return data
-}
+	if (error) {
+		throw error;
+	}
 
-export async function signOut() {
-  const { error } = await supabase.auth.signOut()
-  if (error) throw error
-}
-
-export function getUser() {
-  return supabase.auth.getUser()
-}
-
-export function onAuthStateChange(callback) {
-  return supabase.auth.onAuthStateChange(callback)
+	return data.user;
 }
